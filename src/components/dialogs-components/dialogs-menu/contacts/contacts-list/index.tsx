@@ -5,7 +5,6 @@ import { chatContext } from '../../../../../context/chatContext';
 
 const ContactsList = () => {
   const { chats } = useContext(chatContext);
-  console.log(chats)
 
   return (
     <ul className={styles.list}>

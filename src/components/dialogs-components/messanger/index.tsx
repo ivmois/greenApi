@@ -8,6 +8,8 @@ import { chatContext } from '../../../context/chatContext';
 import { deleteMessage, getMessage } from '../../../api/api';
 import { messageType } from '../../../types/enums';
 
+//получаем все входящие уведомления по интервалу, если это текстовое сообщение, то отправляем данные в контекст.
+
 const Messanger = () => {
   const { loginDetails } = useContext(loginDetailsContext);
   const { setChat, activeChat } = useContext(chatContext);
@@ -19,27 +21,15 @@ const Messanger = () => {
         while ((response = await getMessage(loginDetails))) {
           const receiptId = response.data.receiptId;
           const webhookBody = response.data.body;
-          const typeMessage = webhookBody.messageData.typeMessage;
-
+          const typeMessage = webhookBody.messageData?.typeMessage;
           if (webhookBody.typeWebhook === 'incomingMessageReceived' && typeMessage === 'textMessage') {
             const senderTel = String(parseInt(webhookBody.senderData.sender));
             const senderName = webhookBody.senderData.senderName;
             const message: string = webhookBody.messageData.textMessageData.textMessage;
-            const idMessage = webhookBody.idMessage;
+            const idMessage: string = webhookBody.idMessage;
+
             if (message) {
-              setChat((prev) => {
-                if ([...prev].find((chats) => chats.tel === senderTel)) {
-                  return [
-                    ...prev.map((chat) => {
-                      return chat.tel === senderTel
-                        ? { ...chat, messages: [...chat.messages, { id: idMessage, type: messageType.incoming, message: message }] }
-                        : { ...chat };
-                    }),
-                  ];
-                } else {
-                  return [...prev, { name: senderName, tel: senderTel, messages: [{ id: idMessage, type: messageType.incoming, message: message }] }];
-                }
-              });
+              setChat(senderTel, senderName, { id: idMessage, type: messageType.incoming, message: message });
             }
           }
           await deleteMessage(loginDetails, receiptId);
@@ -56,7 +46,7 @@ const Messanger = () => {
     return () => {
       clearInterval(interval);
     };
-  }, [loginDetails, setChat]);
+  }, [loginDetails]);
 
   return (
     <div className={styles.messenger}>

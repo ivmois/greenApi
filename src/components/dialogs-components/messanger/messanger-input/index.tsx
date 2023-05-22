@@ -24,16 +24,17 @@ const MessangerInput = ({ tel }: IMessengerInput) => {
       if (event.key === 'Enter') {
         event.preventDefault();
         const response = await postMessage(loginDetails, messageData);
-        const idMessage = response.data.idMessage;
-        setChat((prev) => {
-          return [
-            ...prev.map((chat) => {
-              return chat.tel === tel
-                ? { ...chat, messages: [...chat.messages, { id: idMessage, type: messageType.outgoing, message: messageData.message }] }
-                : { ...chat };
-            }),
-          ];
-        });
+        const idMessage: string = response.data.idMessage;
+        setChat(tel,'',{ id: idMessage, type: messageType.outgoing, message: messageData.message });
+        // setChat((prev) => {
+        //   return [
+        //     ...prev.map((chat) => {
+        //       return chat.tel === tel
+        //         ? { ...chat, messages: [...chat.messages, { id: idMessage, type: messageType.outgoing, message: messageData.message }] }
+        //         : { ...chat };
+        //     }),
+        //   ];
+        // });
       }
     } catch (err) {
       console.log(err);

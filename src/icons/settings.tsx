@@ -1,5 +1,3 @@
-import React from 'react';
-
 const SettingsIcon = () => {
   return (
     <svg xmlns="http://www.w3.org/2000/svg" data-name="Livello 1" id="Livello_1" viewBox="0 0 128 128" height="22" width="22">

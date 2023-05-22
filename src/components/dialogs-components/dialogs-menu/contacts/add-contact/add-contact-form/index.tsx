@@ -26,7 +26,7 @@ const AddContactForm = ({ handleClose }: IAddContactForm) => {
   };
 
   const handleSubmit = () => {
-    setChat((prev) => [...prev, { name: inputsValue.name, tel: inputsValue.tel, messages: [] }]);
+    setChat(inputsValue.tel, inputsValue.name);
     handleClose();
   };
 
