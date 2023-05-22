@@ -1,0 +1,20 @@
+.inputPanel {
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.input {
+  width: 90%;
+  padding: 10px;
+  font-size: 15px;
+  border-radius: 10px;
+  background-color: #ffffff;
+  outline: none;
+}
+
+.input:empty::before {
+  content: 'Введите текст';
+  color: attr(title)
+}

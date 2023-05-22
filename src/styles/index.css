@@ -1,0 +1,41 @@
+:root {
+  --background: #eae6df;
+  --background-stripe: #00a884;
+  --background-deeper: #d1d7db;
+  --background-contacts: #ffffff;
+  --panel-background: #008069;
+  --button-color: #00a884;
+  --error-color: #fa8072;
+  --dialogs-background: #f7f8fa;
+  --conversation-panel-background: #efeae2;
+  --panel-header-icon: #54656f;
+  --outgoing-background: #d9fdd3;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background-color: var(--background);
+  background-image: linear-gradient(180deg, var(--background), var(--background-deeper));
+  color: #333333;
+}
+
+button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+p {
+  margin: 0;
+  padding: 0;
+}

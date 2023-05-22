@@ -1,24 +1,31 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import './styles/App.css';
+import { Route, Routes } from 'react-router-dom';
+import Identification from './pages/identification';
+import Dialogs from './pages/dialogs';
+import { SettingContextProvider } from './context/settingsContext';
+import { IdentificationContextProvider } from './context/identificationContext';
+import { LoginDetailsContextProvider } from './context/loginDetailsContext';
+import { CurrentChatContextProvider } from './context/currentChat';
+import { ChatContextProvider } from './context/chatContext';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <LoginDetailsContextProvider>
+        <IdentificationContextProvider>
+          <SettingContextProvider>
+            <CurrentChatContextProvider>
+              <ChatContextProvider>
+                <Routes>
+                  <Route path="/" element={<Identification />} />
+                  <Route path="/dialogs" element={<Dialogs />} />
+                </Routes>
+              </ChatContextProvider>
+            </CurrentChatContextProvider>
+          </SettingContextProvider>
+        </IdentificationContextProvider>
+      </LoginDetailsContextProvider>
     </div>
   );
 }

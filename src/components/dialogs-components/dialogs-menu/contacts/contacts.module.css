@@ -1,0 +1,6 @@
+.contacts {
+  position: relative;
+  z-index: 100;
+  flex-grow: 1;
+  background-color: var(--background-contacts);
+}

@@ -1,0 +1,10 @@
+.header {
+  position: relative;
+  z-index: 200;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: right;
+  padding: 0 15px;
+}
+

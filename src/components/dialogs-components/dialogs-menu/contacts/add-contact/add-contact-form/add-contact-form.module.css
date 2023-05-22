@@ -1,0 +1,40 @@
+.form {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 50;
+  width: 100%;
+  padding: 20px;
+  background-color: var(--background-contacts)
+}
+
+.innerForm {
+  margin-top: 15px;
+}
+
+.label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.name {
+  min-width: 130px;
+}
+
+.input {
+  height: 25px;
+  flex: 1 1 auto;
+}
+
+.button {
+  display: block;
+  margin: 0 auto;
+  padding: 5px 10px;
+  margin-top: 35px;
+  background-color: var(--button-color);
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+}

@@ -1,0 +1,4 @@
+.conversation {
+  flex-grow: 1;
+  background-color: var(--conversation-panel-background);
+}
