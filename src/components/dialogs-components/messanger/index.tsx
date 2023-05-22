@@ -3,16 +3,14 @@ import styles from './messanger.module.css';
 import MessangerHeader from './messanger-header';
 import Conversation from './conversation';
 import MessangerInput from './messanger-input';
-import { currentChatContext } from '../../../context/currentChat';
 import { loginDetailsContext } from '../../../context/loginDetailsContext';
 import { chatContext } from '../../../context/chatContext';
 import { deleteMessage, getMessage } from '../../../api/api';
 import { messageType } from '../../../types/enums';
 
 const Messanger = () => {
-  const { contact } = useContext(currentChatContext);
   const { loginDetails } = useContext(loginDetailsContext);
-  const { setChat } = useContext(chatContext);
+  const { setChat, activeChat } = useContext(chatContext);
 
   useEffect(() => {
     const updateChats = async () => {
@@ -62,9 +60,9 @@ const Messanger = () => {
 
   return (
     <div className={styles.messenger}>
-      <MessangerHeader text={contact.name ?? contact.tel} />
+      <MessangerHeader text={activeChat.name ?? activeChat.tel} />
       <Conversation />
-      <MessangerInput tel={contact.tel} />
+      <MessangerInput tel={activeChat.tel} />
     </div>
   );
 };

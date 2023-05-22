@@ -1,13 +1,13 @@
 import { useContext } from 'react';
-import { currentChatContext } from '../../../../../../context/currentChat';
 import { IContact } from '../../../../../../types/types';
 import styles from './contact-item.module.css';
+import { chatContext } from '../../../../../../context/chatContext';
 
 const ContactsItem = ({ name, tel }: IContact) => {
-  const { setContact } = useContext(currentChatContext);
+  const { setActiveChat } = useContext(chatContext);
 
   const handleClick = () => {
-    setContact({ name, tel });
+    setActiveChat({ name, tel });
   };
   return (
     <li className={styles.item} onClick={handleClick}>

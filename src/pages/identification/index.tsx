@@ -6,7 +6,6 @@ import { getSettings } from '../../api/api';
 import IdentificationError from '../../components/identification-components/identification-error';
 import { settingContext } from '../../context/settingsContext';
 import { useNavigate } from 'react-router-dom';
-import { identificationContext } from '../../context/identificationContext';
 import { loginDetailsContext } from '../../context/loginDetailsContext';
 
 //вводим данные, получаем настройки и отрправляем их в контекст, отправляем в контекст данные для входа, переохдим на '/dialogs'
@@ -18,9 +17,8 @@ const Identification = () => {
   });
   const [errorMassage, setErrorMassage] = useState('');
 
-  const { setLoginDetails } = useContext(loginDetailsContext);
+  const { setLoginDetails, setIdentification } = useContext(loginDetailsContext);
   const { setSettingsData } = useContext(settingContext);
-  const { setIdentification } = useContext(identificationContext);
 
   const navigate = useNavigate();
 

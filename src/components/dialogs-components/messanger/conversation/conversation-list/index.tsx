@@ -1,14 +1,13 @@
 import { useContext } from 'react';
 import { chatContext } from '../../../../../context/chatContext';
-import { currentChatContext } from '../../../../../context/currentChat';
+
 import styles from './conversation-list.module.css';
 import ConversationItem from './conversation-item';
 
 const ConversationList = () => {
-  const { contact } = useContext(currentChatContext);
-  const { chats } = useContext(chatContext);
+  const { chats, activeChat } = useContext(chatContext);
 
-  const currentChat = [...chats].find((chat) => chat.tel === contact.tel);
+  const currentChat = [...chats].find((chat) => chat.tel === activeChat.tel);
   if (!currentChat) return null;
 
   return (

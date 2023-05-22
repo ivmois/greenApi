@@ -4,10 +4,10 @@ import styles from './dialogs.module.css';
 import DialogsMenu from '../../components/dialogs-components/dialogs-menu';
 import Messanger from '../../components/dialogs-components/messanger';
 import { useNavigate } from 'react-router-dom';
-import { identificationContext } from '../../context/identificationContext';
+import { loginDetailsContext } from '../../context/loginDetailsContext';
 
 const Dialogs = () => {
-  const { identification } = useContext(identificationContext);
+  const { identification } = useContext(loginDetailsContext);
   const navigate = useNavigate();
 
   useEffect(() => {

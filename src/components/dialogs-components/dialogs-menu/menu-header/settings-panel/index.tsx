@@ -1,4 +1,3 @@
-import React from 'react';
 import styles from './settings-panel.module.css';
 import ArrowButton from '../../../../../ui/arrow-button';
 import SettingsList from './settings-list';
